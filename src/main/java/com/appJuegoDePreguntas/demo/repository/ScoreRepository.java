@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ScoreRepository extends JpaRepository<Score, Long> {
+    Score findScoreByIdJugador(Long idJugador);
 }

@@ -9,7 +9,7 @@ public class QuestionDto {
     private String question;
     private Integer level;
     private List<String> answers;
-    private String correctAnswer;
+    private static String correctAnswer;
 
     public QuestionDto() {
     }

@@ -15,6 +15,9 @@ public class Score {
     private long idJugador;
     private int score;
 
+    public Score() {
+    }
+
     public Score(long id, long idJugador, int score) {
         this.id = id;
         this.idJugador = idJugador;

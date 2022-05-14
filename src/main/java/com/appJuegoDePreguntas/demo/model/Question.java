@@ -1,11 +1,6 @@
 package com.appJuegoDePreguntas.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @Entity
