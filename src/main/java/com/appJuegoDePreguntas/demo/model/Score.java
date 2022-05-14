@@ -1,18 +1,23 @@
 package com.appJuegoDePreguntas.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 
 public class Score {
-
+    @Id
+    @GeneratedValue
     private long id ;
-    private long idUser;
+    @Column(name= "id_jugador")
+    private long idJugador;
     private int score;
 
-    public Score(long id, long idUser, int score) {
+    public Score(long id, long idJugador, int score) {
         this.id = id;
-        this.idUser = idUser;
+        this.idJugador = idJugador;
         this.score = score;
     }
 
@@ -24,12 +29,12 @@ public class Score {
         this.id = id;
     }
 
-    public long getIdUser() {
-        return idUser;
+    public long getIdJugador() {
+        return idJugador;
     }
 
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
+    public void setIdJugador(long idJugador) {
+        this.idJugador = idJugador;
     }
 
     public int getScore() {

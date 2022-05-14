@@ -1,38 +1,43 @@
 package com.appJuegoDePreguntas.demo.model;
 
-import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Entity
 public class Question {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private long id;
     private Integer level;
-    private Map <Integer, String > answer;
-    private String question;
-    private Integer correctAnswer;
 
-    public Question(long id, Integer level, Map<Integer, String> answer, String question, Integer correctAnswer) {
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Answer> answers;
+
+    private String question;
+    private String answer;
+
+    public Question() {
+    }
+
+    public Question(Long id, Integer level, Set<Answer> answers, String question, String answer) {
         this.id = id;
         this.level = level;
-        this.answer = answer;
+        this.answers = answers;
         this.question = question;
-        this.correctAnswer = correctAnswer;
+        this.answer = answer;
     }
 
-    public Integer getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(Integer correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public long getId() {
+    public Long getIdQuestion() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setIdQuestion(Long id) {
         this.id = id;
     }
 
@@ -44,12 +49,12 @@ public class Question {
         this.level = level;
     }
 
-    public Map<Integer, String> getAnswer() {
-        return answer;
+    public Set<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAnswer(Map<Integer, String> answer) {
-        this.answer = answer;
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
     }
 
     public String getQuestion() {
@@ -58,5 +63,13 @@ public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
