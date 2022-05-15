@@ -1,6 +1,8 @@
 package com.appJuegoDePreguntas.demo.service.impl;
 
 
+import com.appJuegoDePreguntas.demo.dtos.NewUserDto;
+import com.appJuegoDePreguntas.demo.dtos.ScoreResponse;
 import com.appJuegoDePreguntas.demo.dtos.UserDto;
 import com.appJuegoDePreguntas.demo.model.Jugador;
 import com.appJuegoDePreguntas.demo.model.Score;
@@ -22,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String createUser(UserDto userDto) {
+    public NewUserDto createUser(UserDto userDto) {
         Jugador jugador = new Jugador();
         Score score = new Score();
         score.setScore(0);
@@ -31,14 +33,19 @@ public class UserServiceImpl implements UserService {
         jugador = userRepository.save(jugador);
         score.setIdJugador(jugador.getId());
         scoreRepository.save(score);
-
-
-        return jugador.getName();
+        return new NewUserDto(jugador.getId(), jugador.getName());
     }
 
     @Override
     public List<Jugador> getUser() {
 
         return (List<Jugador>)userRepository.findAll();
+    }
+
+    @Override
+    public ScoreResponse getScoreByIdJugador(Long idJugador) {
+       Score score = scoreRepository.findScoreByIdJugador(idJugador);
+
+       return new ScoreResponse("Fin del juego", score.getScore());
     }
 }

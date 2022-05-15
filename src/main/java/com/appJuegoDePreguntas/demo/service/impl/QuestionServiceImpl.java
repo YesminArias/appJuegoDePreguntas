@@ -25,15 +25,12 @@ public class QuestionServiceImpl implements ServiceQuestion {
             Question question = new Question();
             Set<Answer> answers = getAnswers(questionDto);
             question.setQuestion(questionDto.getQuestion());
+            System.out.println(questionDto.getCorrectAnswer());
             question.setAnswer(questionDto.getCorrectAnswer());
             question.setAnswers(answers);
             question.setLevel(questionDto.getLevel());
             questionRepository.save(question);
-
         }
-
-
-        System.out.println(questionDtos);
         return null;
     }
 

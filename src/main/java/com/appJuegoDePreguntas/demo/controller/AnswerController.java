@@ -4,11 +4,9 @@ import com.appJuegoDePreguntas.demo.dtos.AnswerDto;
 import com.appJuegoDePreguntas.demo.dtos.AnswerResponse;
 import com.appJuegoDePreguntas.demo.service.AnswerService;
 import com.appJuegoDePreguntas.demo.service.impl.AnswerServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/answer")
 public class AnswerController {
@@ -19,10 +17,9 @@ public class AnswerController {
         this.answerService = answerService;
     }
 
-    @GetMapping
+    @PostMapping
     public AnswerResponse get(@RequestBody AnswerDto answerDto){
         AnswerResponse answerResponse = answerService.correctAnswer(answerDto);
-
         return answerResponse;
 
     }
